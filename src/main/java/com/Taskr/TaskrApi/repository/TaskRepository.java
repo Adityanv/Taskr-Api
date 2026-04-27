@@ -26,9 +26,8 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
             @Param("status") TaskStatus status,
             @Param("priority") Priority priority
     );
-    @Query("SELECT COUNT(t) FROM Task t WHERE t.dueDate < CURRENT_DATE " +
-            "AND t.status != com.Taskr.TaskrApi.enums.TaskStatus.DONE")
-    Long countOverdueTasks();
+    @Query("SELECT COUNT(t) FROM Task t WHERE t.dueDate < CURRENT_DATE AND t.status != :status")
+    long countOverdueTasks(@Param("status") TaskStatus status);
 
     Long countByOwnerId(Integer id);
 }

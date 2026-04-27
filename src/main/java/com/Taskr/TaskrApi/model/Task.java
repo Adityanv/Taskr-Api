@@ -14,7 +14,9 @@ public class Task {
     private Integer id;
     private String title;
     private String description;
+    @Enumerated(EnumType.STRING)
     private TaskStatus status;
+    @Enumerated(EnumType.STRING)
     private Priority priority;
     private LocalDate dueDate;
     @ManyToOne(fetch = FetchType.LAZY)

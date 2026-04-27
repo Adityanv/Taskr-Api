@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -56,15 +57,16 @@ public class User implements UserDetails {
     private String email;
     @Column(nullable = false)
     private String password;
+    @Enumerated(EnumType.STRING)
     private Role role;
-    private LocalDate date;
+    private LocalDateTime created_at;
 
-    public User(String name, String email, String password, Role role, LocalDate date) {
+    public User(String name, String email, String password, Role role, LocalDateTime date) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.date = date;
+        this.created_at = date;
     }
 
     public User() {
@@ -106,11 +108,11 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getCreated_at() {
+        return created_at;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setCreated_at(LocalDateTime created_at) {
+        this.created_at = created_at;
     }
 }
